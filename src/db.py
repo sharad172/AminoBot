@@ -1,16 +1,16 @@
 import sqlite3
 
 
-EMAIL = 'youremail'            # paste your email
-PASSWORD = 'yourpassword'      # paste your password
-PREFIX = '!'                   # paste your prefix
+EMAIL = 'shreya2534rai@gmail.com'            # paste your email
+PASSWORD = 'Sharaddude12'      # paste your password
+PREFIX = '-'                   # paste your prefix
 DATABASE_NAME = 'database.db'  # do not change if the name is free
-MAIN_COMID = '123456789'       # paste your community id (str)
-REPORT_CHAT = 'chatId'         # paste the chat id where the bot will send reports
+MAIN_COMID = '176762713'       # paste your community id (str)
+REPORT_CHAT = '7d4bc640-fb58-4e56-b288-4ec0a80d251e'         # paste the chat id where the bot will send reports
 
 
 class Database:
-    def __init__(self, database_name: str):
+    def _init_(self, database_name: str):
         with sqlite3.connect(database_name, check_same_thread=False) as db:
             self.db = db
             self.sql = db.cursor()
