@@ -3,20 +3,32 @@ from src.db import PREFIX
 
 system_messages = {
     "help": f"""
-[bc]Command categories:
-[ci]bot
-[ci]chatmanage
-[ci]fun
-[ci]info
+[bc]    ╭  .. ♡  𓂃 ʿ ──╮
+[bc]▬▬▬▬▬▬ OMEN ◗   𖥻 ⸃⸃ 𖤐⤸₊° 𓂅
+[bc]    ╰     ୨  ◞  ✦ ──╯
 
-Send {PREFIX}(category) for command list.
-The values in (brackets) are required.
-The values in [brackets] are optional.
-[i]Not case-sensitive.
-GitHub Link - github.com/K1rL3s/AminoBot
+[ci]Hey there,this Is Omen aka Your Community Companion and Moderator.I am More Happy Yo help You Out.
+
+[ci]© COMMAND CATEGORY ©
+
+[ci]Bot
+[ci]Chatmanage
+[ci]Fun
+[ci]Info
+
+[ci]Note:Send as -fun for command list Of That Particular Category.For Any Query Reach out to my Master At : https://instagram.com/cyberpunk1709?igshid=YmMyMTA2M2Y=
+
+┊     ┊     ┊       ┊   ┊   ˚✩ ⋆｡˚  ✩ °  
+┊     ┊     ┊       ┊  .✫ °                        ┊        ⊹  ┊     ┊
+┊     ✫.    ┊       ☪︎⋆                            °  ┊           .✫      ┊
+┊ ⊹         °┊                                           ☪︎ ⋆                     ┊
+☪︎ ⋆.          ┊. ˚                                                                  ˚✩
 """,
 
-
+    "gm": f""" [ic]Very Good Wala Good Morning ๑(◕‿◕)๑""",
+    
+    "ping": f"""Pong!""",
+    
     "info": f"""
 [bc]Information
 
