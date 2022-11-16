@@ -7,7 +7,26 @@ subs = {MAIN_COMID: amino.SubClient(comId=MAIN_COMID, profile=client.profile), '
 database = Database(DATABASE_NAME)
 print('ready!')
 
-
+@client.event("on_group_member_join")
+def on_group_member_join(data):
+	if data.comId==cidy:
+		try:
+			x=data.message.author.icon
+			response=requests.get(f"{x}")
+			file=open("sample.png","wb")
+			file.write(response.content)
+			file.close()
+			img=open("sample.png","rb")
+			subclient.send_message(chatId=data.message.chatId,message=f"""
+[C]━━━━━━━━━━━━━━━
+[c]Welcome <${data.message.author.nickname}$>
+[C]━━━━━━━━━━━━━━━
+{msg}
+[C]━━━━━━━━━━━━━━━""",embedId=data.message.author.userId,embedTitle=data.message.author.nickname,embedLink=f"ndc://x{cid}/user-profile/{data.message.author.userId}",embedImage=img,mentionUserIds=[data.message.author.userId])
+			print(f"\nwelcomed {data.message.author.nickname} to gc ")
+		except Exception as e:
+			print(e)
+							
 @client.event("on_chat_invite")
 @error_catcher
 def on_chat_invite(data):
@@ -68,6 +87,12 @@ def on_text_message(data):
     if content[0] == 'help':
         return sub_client.send_message(**kwargs, message=system_messages['help'])
 
+    if content[0] == 'gm':
+        return sub_client.send_message(**kwargs, message=system_messages['gm'])
+
+    if content[0] == 'ping':
+        return sub_client.send_message(**kwargs, message=system_messages['ping'])
+                        
     if content[0] == 'info':
         return sub_client.send_message(**kwargs, message=system_messages['info'])
 
@@ -88,7 +113,7 @@ def on_text_message(data):
         if len(text) == 0: return
         translator = google_trans_new.google_translator()
         text = translator.translate(text, lang_tgt='en')
-        response = requests.get(f'http://api.brainshop.ai/get?bid=153868&key=rcKonOgrUFmn5usX&uid=1&msg={text}')
+        response = requests.get(f'')
         message = translator.translate(response.json()['cnt'], lang_src='en', lang_tgt='ru')  # lang_tgt - your language
         return sub_client.send_message(**kwargs, message=message)
 
@@ -183,6 +208,7 @@ def on_text_message(data):
             return sub_client.send_message(**kwargs, message=f"{error}")
         return sub_client.send_message(**kwargs, message=chat_message)
 
+		
     if content[0] == 'chatimages':
         chat_icon = chat_info.icon
         chat_bg = chat_info.backgroundImage
@@ -278,9 +304,9 @@ def on_text_message(data):
 
     if content[0] == 'endvc':
         if client.userId not in chat_managers:
-            return sub_client.send_message(**kwargs, message='Im not a Host or coHost.')
+            return sub_client.send_message(**kwargs, message='Host Ji Mujhe Co-Host Denge Tabhi To End Karungi ! ')
         client.end_vc(comId=com_id, chatId=chat_id)
-        return sub_client.send_message(**kwargs, message='Successfully!')
+        return sub_client.send_message(**kwargs, message='See you Soon..Till Then Khayal Rakho Everyone :)')
 
     if content[0] == 'fancy':
         text = ' '.join(msg_content[len(PREFIX) + 6:].split())
@@ -291,10 +317,10 @@ def on_text_message(data):
         req = requests.post('https://finewords.ru/beafonts/gofonts.php', data=data)
         req.encoding = 'utf-8'
         return sub_client.send_message(**kwargs, message='\n'.join(sorted(set(item for item in req.json().values()))))
-
+        						
     if content[0] == 'follow':
         sub_client.follow(userId=author_id)
-        return sub_client.send_message(**kwargs, message='Successful subscription!')
+        return sub_client.send_message(**kwargs, message='I am your Follower Now Yayy!')
 
     if content[0] == 'get':
         url_info = client.get_from_code(content[1])
@@ -591,10 +617,13 @@ def on_text_message(data):
 
     if content[0] == 'startvc':
         if client.userId not in chat_managers:
-            return sub_client.send_message(**kwargs, message='Im not a Host or coHost.')
+            return sub_client.send_message(**kwargs, message='Host Ji Please Give Me Host,Fir VC Karti Hu ๑(◕‿◕)๑')
         client.start_vc(comId=com_id, chatId=chat_id)
-        return sub_client.send_message(**kwargs, message='Successfully!')
+        return sub_client.send_message(**kwargs, message='Chaliye Shuru Karte Without Any Further Due....As Always Im So Excited Lol (✦ ‿ ✦) ')
 
+    if content[0] == 'Uwu':
+            return sub_client.send_message(**kwargs, message='UwU๑(◕‿◕)๑')
+    	
     if content[0] == 'sticker':
         reply_msg = data['chatMessage']['extensions']['replyMessage']
         sticker_info = reply_msg['extensions']['sticker']
