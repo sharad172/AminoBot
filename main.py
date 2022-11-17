@@ -1,6 +1,6 @@
+from keep_alive import keep_alive
 from src.main_funcs import *
-
-
+keep_alive()
 client = amino.Client()
 client.login(email=EMAIL, password=PASSWORD)
 subs = {MAIN_COMID: amino.SubClient(comId=MAIN_COMID, profile=client.profile), '0': client}  # '0' - Global Chats
